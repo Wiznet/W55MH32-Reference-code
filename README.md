@@ -34,12 +34,6 @@
      - Embedded Tracking Module (ETM)
 
 
-
-   #### Technical Support
-
-   1.  Email：support_wiznet@126.com
-   2.  WeChat：support_wiznet
-
    #### Related information
 
    website：https://wiznet.io/
