@@ -37,7 +37,7 @@ void TIM_Configuration(void)
 
     //Timer TIM3 initialization
     TIM_TimeBaseStructure.TIM_Period        = 9999;                                 //Sets the value of the auto-reload register cycle for the next update event load activity
-    TIM_TimeBaseStructure.TIM_Prescaler     = clocks.PCLK1_Frequency / 1000000 - 1; //Sets the prescaler value used as a divisor of the TIMx clock frequency
+    TIM_TimeBaseStructure.TIM_Prescaler     = clocks.SYSCLK_Frequency / 1000000 - 1; //Sets the prescaler value used as a divisor of the TIMx clock frequency
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;                         //Set up clock splitting:TDTS = Tck_tim
     TIM_TimeBaseStructure.TIM_CounterMode   = TIM_CounterMode_Up;                   //TIM Up Count Mode
     TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);                                 //The time cardinality unit to initialize TIMx according to the specified parameters

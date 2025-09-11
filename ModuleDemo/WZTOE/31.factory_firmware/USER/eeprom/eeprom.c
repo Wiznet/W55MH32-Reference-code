@@ -435,6 +435,67 @@ void ee_Erase(void)
     }
 }
 
+uint8_t ee_Test(void) 
+{
+	uint16_t i;
+	uint8_t write_buf[EEPROM_SIZE];
+	uint8_t read_buf[EEPROM_SIZE];
+  
+/*-----------------------------------------------------------------------------------*/  
+  if (ee_CheckDevice(EEPROM_DEV_ADDR) == 1)
+	{
+		/* No EEPROM detected */
+		printf("No serial EEPROM detected!\r\n");
+				
+		return 0;
+	}
+/*------------------------------------------------------------------------------------*/  
+  /* Fill the test buffer */
+	for (i = 0; i < EEPROM_SIZE; i++)
+	{		
+		write_buf[i] = i;
+	}
+/*------------------------------------------------------------------------------------*/  
+  if (ee_WriteBytes(write_buf, 0, EEPROM_SIZE) == 0)
+	{
+		printf("Error writing eeprom!\r\n");
+		return 0;
+	}
+	else
+	{		
+		printf("Write eeprom successfully!\r\n");
+	}  
+
+/*-----------------------------------------------------------------------------------*/
+  if (ee_ReadBytes(read_buf, 0, EEPROM_SIZE) == 0)
+	{
+		printf("Error reading eeprom!\r\n");
+		return 0;
+	}
+	else
+	{		
+		printf("Read eeprom successfully, the data is as follows:\r\n");
+	}
+/*-----------------------------------------------------------------------------------*/  
+  for (i = 0; i < EEPROM_SIZE; i++)
+	{
+		if(read_buf[i] != write_buf[i])
+		{
+			printf("0x%02X ", read_buf[i]);
+			printf("Error: EEPROM readout does not match the data written");
+			return 0;
+		}
+		printf(" %02X", read_buf[i]);
+		
+		if ((i & 15) == 15)
+		{
+			printf("\r\n");	
+		}		
+	}
+	printf("Eeeprom read and write test was successful\r\n");
+	return 1;
+}
+
 
 uint8_t check_eeprom_network_info(wiz_NetInfo *net_info)
 {

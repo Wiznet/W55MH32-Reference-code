@@ -10,14 +10,14 @@
       <TargetName>Flash</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>5060960::V5.06 update 7 (build 960)::ARMCC</pArmCC>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::ARMCC</pCCUsed>
+      <pArmCC>5060750::V5.06 update 6 (build 750)::.\ARMCC</pArmCC>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARM Compiler 5.06 update 7</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>W55MH32L</Device>
           <Vendor>WIZnet</Vendor>
-          <PackID>W55MH32.W55MH32_DFP.1.0.0</PackID>
+          <PackID>WIZnet.W55MH32_DFP.1.0.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00018000) IROM(0x08000000,0x00100000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -81,9 +81,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name></UserProg1Name>
+            <UserProg1Name>$K\ARM\ARMCC\bin\fromelf.exe --bin --output=Bin\@L.bin !L</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -187,6 +187,7 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -340,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,USE_FULL_ASSERT</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\User;..\..\User\cryptlibTest;..\..\..\..\Libraries\W55MH32Lib\inc;..\..\..\..\Libraries\W55MH32Lib\inc\cryptlib;..\..\..\..\Libraries\CORE;..\..\..\..\Libraries\W55MH32Lib\lib;..\..\..\..\Libraries\CMSIS\Include</IncludePath>
+              <IncludePath>..\..\User;..\..\User\cryptlibTest;..\..\..\..\Libraries\CMSIS\Include;..\..\..\..\Libraries\W55MH32Lib\inc;..\..\..\..\Libraries\W55MH32Lib\inc\cryptlib;..\..\..\..\Libraries\CORE;..\..\..\..\Libraries\W55MH32Lib\lib</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -407,37 +408,37 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>MHSCPU_Driver</GroupName>
+          <GroupName>WIZSCPU_Driver</GroupName>
           <Files>
             <File>
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\misc.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\misc.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_gpio.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_gpio.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_rcc.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_rcc.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_tim.c</FilePath>
-            </File>
-            <File>
-              <FileName>w55mh32_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_usart.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_tim.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_trng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_trng.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_trng.c</FilePath>
+            </File>
+            <File>
+              <FileName>w55mh32_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_usart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -447,7 +448,7 @@
             <File>
               <FileName>system_w55mh32.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\system_w55mh32.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\system_w55mh32.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -527,8 +528,8 @@
         <TargetCommonOption>
           <Device>ARMCM3</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.8.0</PackID>
-          <PackURL>http://www.keil.com/pack/</PackURL>
+          <PackID>ARM.Cortex_DFP.1.1.0</PackID>
+          <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M3") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -697,6 +698,7 @@
             <RvdsVP>0</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -850,7 +852,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,USE_FULL_ASSERT,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\User;..\..\User\cryptlibTest;..\..\..\..\Libraries\W55MH32Lib\inc;..\..\..\..\Libraries\W55MH32Lib\inc\cryptlib;..\..\..\..\Libraries\CORE;..\..\..\..\Libraries\W55MH32Lib\lib;..\..\..\..\Libraries\CMSIS\Include</IncludePath>
+              <IncludePath>..\..\..\..\Libraries\mhF103Lib\inc;..\..\..\..\Libraries\mhF103Lib\inc\cryptlib;..\..\..\..\Libraries\CORE;..\..\..\..\Libraries\STM32F10x_FWLib\inc;..\..\User\cryptlibTest;..\..\User</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -917,37 +919,37 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>MHSCPU_Driver</GroupName>
+          <GroupName>WIZSCPU_Driver</GroupName>
           <Files>
             <File>
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\misc.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\misc.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_gpio.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_gpio.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_rcc.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_rcc.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_tim.c</FilePath>
-            </File>
-            <File>
-              <FileName>w55mh32_usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_usart.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_tim.c</FilePath>
             </File>
             <File>
               <FileName>w55mh32_trng.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\w55mh32_trng.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_trng.c</FilePath>
+            </File>
+            <File>
+              <FileName>w55mh32_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\w55mh32_usart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -957,7 +959,7 @@
             <File>
               <FileName>system_w55mh32.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\system_w55mh32.c</FilePath>
+              <FilePath>..\..\..\..\Libraries\W55MH32Lib\src\system_w55mh32.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1031,8 +1033,8 @@
   <RTE>
     <apis/>
     <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.5.0" condition="ARMv6_7_8-M Device">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.0" condition="ARMv6_7_8-M Device">
+        <package name="CMSIS" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="6.1.0"/>
         <targetInfos>
           <targetInfo name="Flash"/>
           <targetInfo name="RAM"/>

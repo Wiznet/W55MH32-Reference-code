@@ -70,7 +70,7 @@ void TIM3_IRQHandler(void)
         if (btn_timer_flag && btn_timer_cnt >= 20)
         {
             btn_timer_flag = 0;
-            if ((GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_5) == RESET))
+            if ((GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_6) == RESET))
             {
                 btn_cnt++;
             }

@@ -63,6 +63,7 @@ uint8_t ee_ReadBytes(uint8_t *_pReadBuf, uint16_t _usAddress, uint16_t _usSize);
 uint8_t ee_WriteBytes(uint8_t *_pWriteBuf, uint16_t _usAddress, uint16_t _usSize);
 uint8_t ee_CheckDevice(uint8_t _Address);
 void    ee_Erase(void);
+uint8_t ee_Test(void) ;
 uint8_t ee_WaitStandby(void);
 uint8_t check_eeprom_network_info(wiz_NetInfo *net_info);
 

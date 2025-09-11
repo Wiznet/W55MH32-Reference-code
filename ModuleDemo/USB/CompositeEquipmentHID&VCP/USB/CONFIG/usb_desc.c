@@ -326,6 +326,6 @@ uint8_t CustomHID_StringSerial[CUSTOMHID_SIZ_STRING_SERIAL] =
     {
         CUSTOMHID_SIZ_STRING_SERIAL, /* bLength */
         USB_STRING_DESCRIPTOR_TYPE,  /* bDescriptorType */
-        'W', 0, '5', 0, '5', 0, 'M', 0, 'H', 0, ' ', 0, '3', 0, '2', 0};
+        'W', 0, '5', 0, '5', 0, 'M', 0, 'H', 0,  '3', 0, '2', 0};
 
 

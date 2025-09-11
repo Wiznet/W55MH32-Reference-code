@@ -1,3 +1,6 @@
+/* rand.h - header file for rand.c
+ */
+
 #ifndef __WIZ_RAND_H
 #define __WIZ_RAND_H
 

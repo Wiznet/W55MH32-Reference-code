@@ -1,74 +1,79 @@
-#### Routine description
 
- 1.Network_install：Standard driver routine
+#### 例程说明
+1.Network_install：标准驱动例程
 
- 2.DHCP：Obtain network configuration information from the server through DHCP.
+2.DHCP：通过DHCP方式从服务器获取网络配置信息
 
- 3.TCP Client：Perform a data loopback test with the server in the manner of a TCP client.
+3.TCP Client：以TCP客户端的方式和服务器进行数据回环测试
 
- 4.TCP Server：As a TCP server, echo back the data sent by the loopback client.
+4.TCP Server：作为TCP服务器，回环客户端发来的数据
 
- 5.UDP：Loop back the received data in UDP mode.
+5.UDP：以UDP方式回环接收到的数据
 
- 6.UDP_Multicast：Communicate in UDP multicast mode.
+6.UDP_Multicast：以UDP组播方式进行通信
 
- 7.DNS：Resolve the IP address of wiznet.io through DNS.
+7.DNS：通过DNS解析wiznet.io的IP地址
 
- 8.HTTP Client：HTTP request initiation example
+8.HTTP Client：HTTP发起请求示例
 
- 9.HTTP_Server：As an HTTP server, handle client requests.
+9.HTTP_Server：作为HTTP服务器，处理客户端请求
 
- 10.SNTP：Obtain network time.
+10.SNTP：获取网络时间
 
- 11.SMTP：Quickly send emails via the SMTP protocol.
+11.SMTP：通过SMTP协议快速发送邮件
 
- 12.NetBIOS：Through the NetBIOS protocol, other users can initiate ping requests in a format similar to domain names.
+12.NetBIOS：通过NetBIOS协议，让其他用户可以以类似域名的格式发起ping请求
 
- 13.UPnP：Quickly control devices through the UPnP protocol.
+13.UPnP：通过UPnP协议快速控制设备
 
- 14.TFTP：Connect to the TFTP server as a client to download files.
+14.TFTP：以客户端身份连接TFTP服务器下载文件
 
- 15.SNMP：Manage network devices via SNMP protocol
+15.SNMP：通过SNMP协议管理网络设备
 
- 16.PING：PING devices in IPRAW mode
+16.PING：IPRAW模式ping设备
 
- 17.ARP：Hardware ARP example
+17.ARP：硬件ARP示例
 
- 18.FTP_Server：FTP server mode example. Other devices can download files by accessing the server.
+18.FTP_Server：FTP服务器模式示例，其他设备可以通过访问服务器下载文件
 
- 19.FTP_Client：Example of FTP client side mode with access to an FTP server to download files
+19.FTP_Client：FTP客户端模式示例，可以访问FTP服务器下载文件
 
- 20.WOL：Wake up devices via network.
+20.WOL：通过网络唤醒设备
 
- 21.Low_Power：Software controls PHY mode.
+21.Low_Power：软件控制PHY模式
 
- 22.MQTT&Aliyun：Connect to Alibaba Cloud platform and realize data interaction through MQTT protocol
+22.MQTT&Aliyun：通过MQTT协议连接阿里云平台并实现数据交互
 
- 23.MQTT_OneNET：Connect to the OneNET platform through the MQTT protocol and realize data interaction.
+23.MQTT_OneNET：通过MQTT协议连接OneNET平台并实现数据交互
 
- 24.TCP_Client_Multi_socket：Open all socket connections to the TCP server.
+24.TCP_Client_Multi_socket：开启全部socket连接TCP服务器
 
- 25.TCP_Server_Multi_socket：As a TCP server, it allows multiple devices to connect for data communication.
+25.TCP_Server_Multi_socket：作为TCP服务器，允许多个设备连接进行数据通信
 
- 26.Upper_computer_search_and_config：Find the device and modify the network configuration through the host computer
+26.Upper_computer_search_and_config：通过上位机修改配置
 
- 27.interrupt：Interrupt loopback data example
+27.interrupt：中断回环数据示例
 
- 28.velocity_measurement：Ethernet speed measurement example
+28.velocity_measurement：以太网测速示例
 
- 29.Modbus_TCP_Server：Modbus TCP Server example
+29.Modbus_TCP_Server：Modbus TCP示例
 
- 30.facory_routine：DHCP + HTTP Server + NetBIOS example
+30.facory_routine：DHCP+HTTP Server+NetBIOS示例
 
 
-   #### Related information
+#### 技术支持
 
-   website：https://wiznet.io/
+1.  邮箱：support_wiznet@126.com
+2.  微信：support_wiznet
 
-   github:[WIZnet (github.com)](https://github.com/Wiznet/)
+#### 相关资料
 
-   gitee:[WIZnet HK (wiznet-hk) - Gitee.com](https://gitee.com/wiznet-hk)
+官网：[wiznet.io](https://wiznet.io/)
 
-   CSDN：https://blog.csdn.net/WIZnet2012
+github:[WIZnet (github.com)](https://github.com/Wiznet/)
 
-   BiliBili：[WIZnet_HK的个人空间-WIZnet_HK个人主页-哔哩哔哩视频 (bilibili.com)](https://space.bilibili.com/3493140098976365)
+gitee:[WIZnet HK (wiznet-hk) - Gitee.com](https://gitee.com/wiznet-hk)
+
+CSDN：https://blog.csdn.net/WIZnet2012
+
+哔哩哔哩：[WIZnet_HK的个人空间-WIZnet_HK个人主页-哔哩哔哩视频 (bilibili.com)](https://space.bilibili.com/3493140098976365)

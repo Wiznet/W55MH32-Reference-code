@@ -1,3 +1,6 @@
+/* wiz_sm3.h - header file for sm3.c
+ */
+
 #ifndef __WIZ_SM3_H
 #define __WIZ_SM3_H
 

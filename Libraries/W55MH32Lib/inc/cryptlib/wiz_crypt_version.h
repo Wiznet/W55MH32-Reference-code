@@ -1,3 +1,8 @@
+/**
+ * \file version.h
+ *
+ */
+
 #ifndef __WIZ_CRYPT_VERSION_H
 #define __WIZ_CRYPT_VERSION_H
 
@@ -19,4 +24,4 @@ uint32_t wiz_crypt_version(void);
 }
 #endif
 
-#endif 
+#endif /* version.h */

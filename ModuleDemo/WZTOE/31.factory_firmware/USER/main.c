@@ -32,12 +32,13 @@
 
 
 extern MYI2C_Struct SENx;
+#define DEFAULT_MAC_EN        1                   //1: Use the default MAC address, 0: Use the user - defined MAC address
 #define SOCKET_ID             0
 #define ETHERNET_BUF_MAX_SIZE (1024 * 2)
 
 /* network information */
 wiz_NetInfo default_net_info = {
-    .mac  = {0x00, 0x08, 0xdc, 0x12, 0x22, 0x12},
+    .mac  = {0x00, 0x08, 0xdc, 0x12, 0x22, 0x12}, //User-defined MAC address
     .ip   = {192, 168, 1, 30},
     .gw   = {192, 168, 1, 1},
     .sn   = {255, 255, 255, 0},
@@ -59,18 +60,24 @@ int main(void)
     /* hardware initialization */
     rcc_clk_config();
     delay_init();
-    console_usart_init(115200);
-
+	  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 
+	  console_usart_init(115200);
+	  usb_init();
+    
+		delay_ms(200);
     printf("%s factory firmware\r\n", _WIZCHIP_ID_);
     tim3_init();
     user_gpio_init();
     i2c_CfgGpio();
-    delay_ms(1000);
-    usb_init();
+    
+    
     MYI2C_Init(&SENx, 1000, 0x38);
-
+	//ee_Erase();
     /* wiztoe init */
     wiz_toe_init();
+#if DEFAULT_MAC_EN == 1
+    getSHAR(default_net_info.mac);
+#endif
 
     wiz_phy_link_check();
     check_eeprom_network_info(&default_net_info);
@@ -78,7 +85,7 @@ int main(void)
 
     wizchip_getnetinfo(&net_info);
     printf("Please enter% d.% d.% d.% d in your browser to access the %s HTTP server\r\n", net_info.ip[0], net_info.ip[1], net_info.ip[2], net_info.ip[3], _WIZCHIP_ID_);
-
+		
     reg_httpServer_webContent((uint8_t *)"index.html", (uint8_t *)HTML_PAGE);
     httpServer_init(http_tx_ethernet_buf, http_rx_ethernet_buf, _WIZCHIP_SOCK_NUM_, socknumlist); // Initializing the HTTP server
     while (1)

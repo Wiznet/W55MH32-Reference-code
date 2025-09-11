@@ -1,3 +1,6 @@
+/* sm4.h - header file for sm4.c
+ */
+
 #ifndef __WIZ_SM4_H
 #define __WIZ_SM4_H
 

@@ -276,7 +276,7 @@ uint8_t Joystick_StringSerial[JOYSTICK_SIZ_STRING_SERIAL] =
     {
         JOYSTICK_SIZ_STRING_SERIAL, /* bLength */
         USB_STRING_DESCRIPTOR_TYPE, /* bDescriptorType */
-        'W', 0, '5', 0, '5', 0, 'M', 0, 'H', 0, '3', 0, '2', 0, ' ', 0};
+        'W', 0, '5', 0, '5', 0, 'M', 0, 'H', 0, '3', 0, '2', 0};
 
 /******************* (C) COPYRIGHT  2024  WIZnet *****END OF FILE****/
 

@@ -46,7 +46,7 @@ void TIM_Configuration(void)
 
     //Timer TIM3 initialization
     TIM_TimeBaseStructure.TIM_Period        = 99;
-    TIM_TimeBaseStructure.TIM_Prescaler     = clocks.PCLK1_Frequency / 1000000 - 1;
+    TIM_TimeBaseStructure.TIM_Prescaler     = clocks.SYSCLK_Frequency / 1000000 - 1;
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseStructure.TIM_CounterMode   = TIM_CounterMode_Up;
     TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);

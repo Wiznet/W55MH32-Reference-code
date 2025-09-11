@@ -1,3 +1,18 @@
+/*
+ *Copyright (C) 2018-2019,Megahunt Tech.Co,Ltd
+ *All rights reserved
+ *
+ *FileName      :wiz_sha.h
+ *Description   :This file is a header file of sha alogrithm module, including 
+ *               defination of secure hash alogrithm and secure hash rand copy alogrithm.
+ *               and enum of SHA_ModeDef,return value macro of SHA.
+ *            
+ *Version       :1.1
+ *Author        :Mick
+ *Date          :2019.01.11
+ *Modify        :none
+ */
+
 #ifndef __WIZ_SHA_H
 #define __WIZ_SHA_H
 
@@ -35,17 +50,17 @@ typedef enum
     WIZSHA1 = 0,
     WIZSHA224 = 1,
     WIZSHA256 = 2,
-//    WIZSHA384 = 3,
-//    WIZSHA512 = 4
 }WIZSHA_MOD_TYPE;
 
 uint32_t WIZSHA1_Starts(WIZSHA1_Context *pCtx);
 uint32_t WIZSHA1_Update(WIZSHA1_Context *pCtx, const uint8_t *pu8Input, uint32_t u32InputLen);
-uint32_t WIZSHA1_Finish(WIZSHA1_Context *pCtx, uint8_t au8Digest[20]);
+uint32_t WIZSHA1_Finish(WIZSHA1_Context *pCtx, uint8_t au8Digest[20]); 
+uint32_t WIZSHA1_Clone(WIZSHA1_Context *pCtx, uint8_t au8Digest[20]);
 
 uint32_t WIZSHA256_Starts(WIZSHA2_Context *pCtx);
 uint32_t WIZSHA256_Update(WIZSHA2_Context *pCtx, const uint8_t *pu8Input, uint32_t u32InputLen);
-uint32_t WIZSHA256_Finish(WIZSHA2_Context *pCtx, uint8_t au8Digest[32]);
+uint32_t WIZSHA256_Finish(WIZSHA2_Context *pCtx, uint8_t au8Digest[32]); 
+uint32_t WIZSHA256_Clone(WIZSHA2_Context *pCtx, uint8_t au8Digest[32]);
 
 uint32_t WIZSHA_Sha(WIZSHA_MOD_TYPE ShaType, const uint8_t *pu8Input, uint32_t u32Ibytes, uint8_t *pu8Output, uint32_t u32Outlen);
 

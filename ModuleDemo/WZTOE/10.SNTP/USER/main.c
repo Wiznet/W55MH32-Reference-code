@@ -25,12 +25,13 @@
 #include "sntp.h"
 #include "bsp_rtc.h"
 
+#define DEFAULT_MAC_EN        1                   //1: Use the default MAC address, 0: Use the user - defined MAC address
 #define SOCKET_ID             0
 #define ETHERNET_BUF_MAX_SIZE (1024 * 2)
 
 /* network information */
 wiz_NetInfo default_net_info = {
-    .mac  = {0x00, 0x08, 0xdc, 0x12, 0x22, 0x12},
+    .mac  = {0x00, 0x08, 0xdc, 0x12, 0x22, 0x12}, //User-defined MAC address
     .ip   = {192, 168, 1, 30},
     .gw   = {192, 168, 1, 1},
     .sn   = {255, 255, 255, 0},
@@ -58,6 +59,10 @@ int main(void)
 
     /* wiztoe init */
     wiz_toe_init();
+#if DEFAULT_MAC_EN == 1
+    getSHAR(default_net_info.mac);
+#endif
+
     wiz_phy_link_check();
     network_init(ethernet_buf, &default_net_info);
 

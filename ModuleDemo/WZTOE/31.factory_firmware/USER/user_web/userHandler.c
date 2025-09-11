@@ -51,6 +51,17 @@ uint8_t predefined_get_cgi_processor(uint8_t *uri_name, uint8_t *buf, uint16_t *
         // to do
         ; // make_json_todo(buf, len);
     }
+    else if (strcmp((const char *)uri_name, "check_eeprom.cgi") == 0)
+    {
+        if(ee_Test())
+        {
+            *len = sprintf((char *)buf, "alert('eeprom测试通过!');");
+        }
+        else
+        {
+            *len = sprintf((char *)buf, "alert('eeprom测试失败!');");
+        }
+    }
     else if (strcmp((const char *)uri_name, "get_netinfo.cgi") == 0)
     {
         make_json_netinfo(buf, len);
@@ -70,13 +81,13 @@ uint8_t predefined_get_cgi_processor(uint8_t *uri_name, uint8_t *buf, uint16_t *
         else
         {
             memset(send_data, 0, sizeof(send_data));
-            printf("file_cnt:%d\r\n", file_cnt);
+            // printf("file_cnt:%d\r\n", file_cnt);
             for (i = 0; i < file_cnt; i++)
             {
                 sprintf((char *)temp, "%s\\n", file_name[i]);
                 strcat((char *)send_data, (char *)temp);
             }
-            printf("send_data:%s\r\n", send_data);
+            // printf("send_data:%s\r\n", send_data);
             *len = sprintf((char *)buf, "$('sd-textbox').value=\"%s\";", send_data);
             memset(send_data, 0, sizeof(send_data));
             memset(file_name, 0, sizeof(file_name));
@@ -205,10 +216,14 @@ void make_json_netinfo(uint8_t *buf, uint16_t *len)
     // DHCP: 1 - Static, 2 - DHCP
 
     *len = sprintf((char *)buf, "get_netinfo_callback({"
+			                          "\"mode\":\"%d\","
+		                            "\"mac\":\"%02X:%02X:%02X:%02X:%02X:%02X\","
                                 "\"ip\":\"%d.%d.%d.%d\","
                                 "\"gw\":\"%d.%d.%d.%d\","
                                 "\"sn\":\"%d.%d.%d.%d\","
                                 "\"dns\":\"%d.%d.%d.%d\"});",
+		               netinfo.dhcp,
+		               netinfo.mac[0],netinfo.mac[1],netinfo.mac[2],netinfo.mac[3],netinfo.mac[4],netinfo.mac[5],
                    netinfo.ip[0], netinfo.ip[1], netinfo.ip[2], netinfo.ip[3],
                    netinfo.gw[0], netinfo.gw[1], netinfo.gw[2], netinfo.gw[3],
                    netinfo.sn[0], netinfo.sn[1], netinfo.sn[2], netinfo.sn[3],
@@ -230,6 +245,15 @@ void set_netinfo(uint8_t *uri, uint8_t *buf, uint16_t *len)
     uint8_t     ip[20], sn[20], gw[20], dns[20], *param;
     wiz_NetInfo netinfo;
     wizchip_getnetinfo(&netinfo);
+	  param = get_http_param_value((char *)uri, "mode");
+    if(strcmp((char*)param,"1")==0)
+		{
+			  netinfo.dhcp = NETINFO_STATIC;
+		}
+		else
+		{
+			  netinfo.dhcp = NETINFO_DHCP;
+		}
     param = get_http_param_value((char *)uri, "ip");
     strcpy((char *)ip, (char *)param);
     param = get_http_param_value((char *)uri, "sn");
@@ -242,10 +266,16 @@ void set_netinfo(uint8_t *uri, uint8_t *buf, uint16_t *len)
     parse_ip((char *)sn, netinfo.sn);
     parse_ip((char *)gw, netinfo.gw);
     parse_ip((char *)dns, netinfo.dns);
-    netinfo.dhcp = NETINFO_STATIC;
     ee_WriteBytes((uint8_t *)&netinfo, 0, sizeof(wiz_NetInfo));
     reboot_flag = 1;
-    *len        = sprintf((char *)buf, "alert(\"网络配置成功，即将跳转至新页面！\");setTimeout(function(){location.href='http://%d.%d.%d.%d/';}, 3000 );", netinfo.ip[0], netinfo.ip[1], netinfo.ip[2], netinfo.ip[3]);
+		if(netinfo.dhcp == NETINFO_STATIC)
+		{
+			*len        = sprintf((char *)buf, "alert(\"网络配置成功，模式为静态配置模式，即将跳转至新页面！\");setTimeout(function(){location.href='http://%d.%d.%d.%d/';}, 3000 );", netinfo.ip[0], netinfo.ip[1], netinfo.ip[2], netinfo.ip[3]);
+		}
+		else
+		{
+			*len        = sprintf((char *)buf, "alert(\"网络配置成功，模式为DHCP模式，请根据串口提示新地址进入配置界面！\");");
+		}
 }
 void make_json_update_page(uint8_t *buf, uint16_t *len)
 {
@@ -275,7 +305,8 @@ void make_json_update_page(uint8_t *buf, uint16_t *len)
         *len = sprintf((char *)buf, "update_page_callback({"
                                     "\"temperature\":\"%.2f\","
                                     "\"humidity\":\"%.2f\","
-                                    "\"button_cnt\":\"%d\"});",
-                       SENx.T, SENx.RH, btn_cnt);
+                                    "\"button_cnt\":\"%d\","
+                                    "\"usb_conn_flag\":%d});",
+                       SENx.T, SENx.RH, btn_cnt,usb_conn_flag);
     }
 }

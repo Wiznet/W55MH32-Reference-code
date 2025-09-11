@@ -151,12 +151,12 @@ const uint8_t Joystick_StringProduct[JOYSTICK_SIZ_STRING_PRODUCT] =
         JOYSTICK_SIZ_STRING_PRODUCT, /* bLength */
         USB_STRING_DESCRIPTOR_TYPE,  /* bDescriptorType */
         'W', 0, 'I', 0, 'Z', 0, 'n', 0, 'e', 0, 't', 0, ' ', 0,
-        'K', 0, 'e', 0, 'y', 0, 'b', 0, 'o', 0, 'r', 0, 'd', 0, ' ', 0, ' ', 0};
+        'K', 0, 'e', 0, 'y', 0, 'b', 0, 'o', 0, 'r', 0, 'd', 0};
 uint8_t Joystick_StringSerial[JOYSTICK_SIZ_STRING_SERIAL] =
     {
         JOYSTICK_SIZ_STRING_SERIAL, /* bLength */
         USB_STRING_DESCRIPTOR_TYPE, /* bDescriptorType */
-        'W', 0, '5', 0, '5', 0, 'M', 0, 'H', 0, '3', 0, '2', 0, ' ', 0};
+        'W', 0, '5', 0, '5', 0, 'M', 0, 'H', 0, '3', 0, '2', 0};
 
 /******************* (C) COPYRIGHT  2024  WIZnet *****END OF FILE****/
 

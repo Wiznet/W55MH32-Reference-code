@@ -8,7 +8,7 @@
 #define LED_PORT    GPIOD
 #define BEEP_PIN    GPIO_Pin_15
 #define BEEP_PORT   GPIOD
-#define BUTTON_PIN  GPIO_Pin_5
+#define BUTTON_PIN  GPIO_Pin_6
 #define BUTTON_PORT GPIOG
 
 void user_gpio_init(void);

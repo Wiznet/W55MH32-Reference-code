@@ -30,4 +30,5 @@ void wiz_phy_link_check(void);
  */
 void wiz_print_phy_info(void);
 
+
 #endif

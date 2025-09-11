@@ -13,11 +13,11 @@ uint16_t usb_data_len[20]  = {0};
 uint8_t  data_cnt          = 0;
 void     usb_init(void)
 {
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); //�ж����ȼ����� ��2��delay_ms(1800);
+    
     delay_ms(1800);
-    USB_Port_Set(0);                                //USB�ȶϿ�
+    USB_Port_Set(0);
     delay_ms(700);
-    USB_Port_Set(1);                                //USB�ٴ�����
+    USB_Port_Set(1);
     Set_USBClock();
     USB_Interrupts_Config();
     USB_Init();

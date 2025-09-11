@@ -82,7 +82,7 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>fromelf.exe #L --vhx --8x1 --output main.hex;fromelf --bin -o "$L@L.bin" "#L"</UserProg1Name>
+            <UserProg1Name>$K\ARM\ARMCC\bin\fromelf.exe --bin --output=Bin\@L.bin !L</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -337,7 +337,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--no-multibyte-chars</MiscControls>
-              <Define>USE_STDPERIPH_DRIVER</Define>
+              <Define>USE_STDPERIPH_DRIVER,W55MH32_XL</Define>
               <Undefine></Undefine>
               <IncludePath>..\USER;..\..\..\..\Libraries\W55MH32Lib\inc;..\..\..\..\Libraries\CMSIS\Include;..\..\..\..\Libraries\CORE;..\..\..\..\Libraries\CMSIS\Lib\ARM;..\..\..\..\Libraries\ioLibrary\Ethernet;..\..\..\..\Libraries\ioLibrary\Internet\DHCP;..\USER\wiz_interface;..\USER\tim;..\USER\uart;..\USER\delay;..\USER\httpServer;..\USER\eeprom;..\USER\user_web;..\USER\gpio;..\USER\aht20;..\USER\USB\CONFIG;..\USER\USB\W55MH32_USB-FS-Device_Driver\inc;..\..\..\..\Libraries\W55MH32Lib\lib;..\USER\rcc;..\USER\USB;..\USER\sdio\fatfs;..\USER\sdio\sdio;..\USER\sdio</IncludePath>
             </VariousControls>
