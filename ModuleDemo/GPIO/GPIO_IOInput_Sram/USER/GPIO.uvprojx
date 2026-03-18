@@ -421,7 +421,7 @@
             <File>
               <FileName>startup_w55mh32.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\..\..\Libraries\CORE\startup_w55mh32.s</FilePath>
+              <FilePath>.\startup_w55mh32.s</FilePath>
             </File>
           </Files>
         </Group>

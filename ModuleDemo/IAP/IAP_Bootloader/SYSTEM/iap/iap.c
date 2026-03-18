@@ -1,6 +1,6 @@
 #include "iap.h"
 
-uint16_t STMFLASH_ReadHalfWord(uint32_t faddr)
+uint16_t WIZFLASH_ReadHalfWord(uint32_t faddr)
 {
     return *(vu16 *)faddr;
 }
@@ -14,7 +14,7 @@ void FLASH_Read(uint32_t ReadAddr, uint16_t *pBuffer, uint16_t NumToRead)
     uint16_t i;
     for (i = 0; i < NumToRead; i++)
     {
-        pBuffer[i]  = STMFLASH_ReadHalfWord(ReadAddr); //Read 2 bytes.
+        pBuffer[i]  = WIZFLASH_ReadHalfWord(ReadAddr); //Read 2 bytes.
         ReadAddr   += 2;                               //Offset by 2 bytes.
     }
 }

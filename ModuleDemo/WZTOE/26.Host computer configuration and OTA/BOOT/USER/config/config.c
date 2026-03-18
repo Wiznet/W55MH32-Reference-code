@@ -61,7 +61,7 @@ void system_config_param_get(void)
 
 int system_first_run_check(void)
 {
-    if (system_cfg.mac[0] == 0xFF)
+    if ((system_cfg.mac[0] != 0x00) && (system_cfg.mac[0] != 0x08) && (system_cfg.mac[0] != 0xdc))
     {
         printf("First download\r\n");
 #if DEFAULT_MAC_EN ==1

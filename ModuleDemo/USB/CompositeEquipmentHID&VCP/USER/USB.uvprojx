@@ -406,7 +406,7 @@
             <File>
               <FileName>startup_w55mh32.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\..\..\Libraries\CORE\startup_w55mh32.s</FilePath>
+              <FilePath>.\startup_w55mh32.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -501,7 +501,7 @@
             <File>
               <FileName>system_w55mh32.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\Libraries\w55mh32Lib\src\system_w55mh32.c</FilePath>
+              <FilePath>.\system_w55mh32.c</FilePath>
             </File>
           </Files>
         </Group>

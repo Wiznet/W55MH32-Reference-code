@@ -1,5 +1,5 @@
 /*
- *Copyright (C) 2018-2019,Megahunt Tech.Co,Ltd
+ *Copyright (C) 2018-2019,WIZnet Tech.Co,Ltd
  *All rights reserved
  *
  *FileName      :wiz_sha.h

@@ -60,10 +60,10 @@ void main(int args) {
   WIZRAND_Init((uint32_t *)&u8RngBuff, sizeof(u8RngBuff));
 
   ver = wiz_crypt_version();
-  DBG_PRINT("MegaHunt CARD Secure Test Demo V1.0, secure lib version is "
+  DBG_PRINT("WIZnet CARD Secure Test Demo V1.0, secure lib version is "
             "V%02x.%02x.%02x.%02x\n",
             ver >> 24, (ver >> 16) & 0xFF, (ver >> 8) & 0xFF, ver & 0xFF);
-  DBG_PRINT("MegaHunt CARD Crypt Test V1.0 start......\r\n");
+  DBG_PRINT("WIZnet CARD Crypt Test V1.0 start......\r\n");
 
   while (1) {
     i++;

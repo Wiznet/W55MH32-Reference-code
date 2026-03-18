@@ -1,17 +1,22 @@
+#include "flash.h"
 #include <stdint.h>
 #include <string.h>
 #include "w55mh32_conf.h"
 
-void flash_erase(uint32_t address, uint32_t length)
+int flash_erase(uint32_t address, uint32_t length)
 {
     int i;
     uint32_t status;
     uint32_t page_num;
     uint32_t erase_address;
 
-    page_num = length / 4096;
+    if(address < FLASH_BASE_ADDRESS || (address + length) > (FLASH_BASE_ADDRESS + FLASH_SIZE))
+    {
+        return -1; // Illegal address
+    }
+    page_num = length / FLASH_PAGE_SIZE;
 
-    if (length % 4096 > 0)
+    if (length % FLASH_PAGE_SIZE > 0)
     {
         page_num++;
     }
@@ -20,9 +25,8 @@ void flash_erase(uint32_t address, uint32_t length)
 
     for (i = 0; i < page_num; i++)
     {
-        erase_address = address + i * 4096;
+        erase_address = address + i * FLASH_PAGE_SIZE;
 
-        //  printf("[bootload] %08X\r\n", erase_address);
         status = FLASH_ErasePage(erase_address);
 
         while (status == FLASH_BUSY)
@@ -39,9 +43,10 @@ void flash_erase(uint32_t address, uint32_t length)
     }
 
     FLASH_Lock();
+    return 0;
 }
 
-void flash_write(uint32_t address, uint8_t *data, uint32_t length)
+int flash_write(uint32_t address, uint8_t *data, uint32_t length)
 {
     int i;
 
@@ -49,6 +54,10 @@ void flash_write(uint32_t address, uint8_t *data, uint32_t length)
     uint32_t write_address;
     uint32_t write_data;
 
+    if(address < FLASH_BASE_ADDRESS || (address + length) > (FLASH_BASE_ADDRESS + FLASH_SIZE))
+    {
+        return -1; // Illegal address
+    }
     FLASH_Unlock();
 
     for (i = 0; i < length; i += 4)
@@ -70,14 +79,20 @@ void flash_write(uint32_t address, uint8_t *data, uint32_t length)
         }
     }
     FLASH_Lock();
+    return 0;
 }
 
-void flash_read(uint32_t address, uint8_t *data, uint32_t length)
+int flash_read(uint32_t address, uint8_t *data, uint32_t length)
 {
     uint32_t i;
 
+    if(address < FLASH_BASE_ADDRESS || (address + length) > (FLASH_BASE_ADDRESS + FLASH_SIZE))
+    {
+        return -1; // Illegal address
+    }
     for (i = 0; i < length; i++)
     {
         data[i] = *(__IO uint8_t *)(address + i);
     }
+    return 0;
 }

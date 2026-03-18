@@ -146,11 +146,11 @@ void USB_Cable_Config(FunctionalState NewState)
 void DFU_Button_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG, ENABLE);
     GPIO_StructInit(&GPIO_InitStruct);
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
-    GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_0;
-    GPIO_Init(GPIOB, &GPIO_InitStruct);
+    GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_6;
+    GPIO_Init(GPIOG, &GPIO_InitStruct);
 }
 
 /*******************************************************************************
@@ -163,7 +163,7 @@ void DFU_Button_Init(void)
 
 uint8_t DFU_Button_Read(void)
 {
-    return GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0);
+    return GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_6);
 }
 
 /*******************************************************************************

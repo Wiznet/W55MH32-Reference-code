@@ -42,7 +42,8 @@ uint32_t  JumpAddress;
 int main(void)
 {
     DFU_Button_Init();
-    if (DFU_Button_Read() != 0x00)
+	  //Without pressing the button, jump to the APP
+    if (DFU_Button_Read() != RESET)
     {     /* Test if user code is programmed starting from address 0x8003000 */
         if (((*(__IO uint32_t *)ApplicationAddress) & 0x2FFE0000) == 0x20000000)
         { /* Jump to user application */
